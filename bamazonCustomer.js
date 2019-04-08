@@ -63,7 +63,8 @@ let buyItem = (id, qty) => {
               "UPDATE products SET ? WHERE ?",
               [
                 {
-                  stock_quantity: newQty
+                  stock_quantity: newQty,
+                  product_sales: qty * element.price
                 },
                 {
                   item_id: id
@@ -76,18 +77,6 @@ let buyItem = (id, qty) => {
               }
             );
 
-            // connection.query("UPDATE products SET ? WHERE ?", [
-            //   {
-            //     stock_quantity: newQty
-            //   },
-            //   {
-            //     item_id: parseInt(id)
-            //   }
-            // ]),
-            //   (err, res) => {
-            //     if (err) throw err;
-            //     console.log("Successfully updated DataBase!\n" + res);
-            //   };
             console.log(
               `You've successfully purchased this item for $${qty *
                 element.price}`
